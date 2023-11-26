@@ -2,11 +2,12 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { webVitals } from '$lib/vitals';
-	import Header from './Header.svelte';
 	import './styles.css';
-
+	import "../app.css";
+	import Navbar from "../lib/components/navbar.svelte";
+	import Footer from "../lib/components/footer.svelte";
 	/** @type {import('./$types').LayoutServerData} */
-	export let data;
+	export let data;	
 
 	$: if (browser && data?.analyticsId) {
 		webVitals({
@@ -18,15 +19,11 @@
 </script>
 
 <div class="app">
-	<Header />
-
+	<Navbar />
 	<main>
 		<slot />
 	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+	<Footer />
 </div>
 
 <style>
